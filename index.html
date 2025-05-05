@@ -373,11 +373,28 @@ if (fullTitle) {
     }
 
     function downloadImage() {
-      const link = document.createElement('a');
-      link.download = 'artwork.png';
-      link.href = canvas.toDataURL();
-      link.click();
+  const image = canvas.toDataURL("image/png");
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // Mobile workaround: Open in new tab instead
+    const newWindow = window.open();
+    if (newWindow) {
+      newWindow.document.write('<img src="' + image + '" style="width:100%;">');
+    } else {
+      alert("Pop-up blocked! Please allow pop-ups for this site.");
     }
+  } else {
+    // Desktop: proceed with download
+    const link = document.createElement('a');
+    link.download = 'artwork.png';
+    link.href = image;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+}
   </script>
 </body>
 </html>
