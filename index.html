@@ -200,7 +200,8 @@
     <button onclick="generateArtwork()">Generate</button>
     <button onclick="downloadImage()">Download</button>
 
-    <canvas id="canvas" width="3000" height="3000"></canvas>
+    <p id="savePrompt" style="display:none; margin-top:10px;">📷 Long-press or right-click image below to save:</p>
+<img id="canvasImage" style="width:100%; border:1px solid #444; display:none;" alt="Generated Artwork">
   </div>
 
   <script>
@@ -321,6 +322,15 @@
       if (!logoImage.complete) {
   logoImage.onload = () => generateArtwork();
   return;
+
+  // Update static preview image for saving
+const canvasImage = document.getElementById('canvasImage');
+canvasImage.src = canvas.toDataURL("image/png");
+canvasImage.style.display = 'block';
+
+const savePrompt = document.getElementById('savePrompt');
+savePrompt.style.display = 'block';
+
 }
 
 // ✅ Center and draw logo
