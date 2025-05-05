@@ -110,9 +110,11 @@
   <div class="container">
     <h2>Artwork Generator</h2>
 
+    <!-- Keep the file input OUTSIDE of the upload zone, and hidden -->
+    <input type="file" id="bgImage" accept="image/*">
+
     <div class="upload-zone" id="dropzone">
       <p>📂 Drag & drop your image here or click to upload</p>
-      <input type="file" id="bgImage" accept="image/*">
       <div id="uploadStatus"></div>
       <img id="previewImage" class="preview-image" style="display:none;"/>
     </div>
