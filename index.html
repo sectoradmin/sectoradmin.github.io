@@ -373,12 +373,20 @@ if (fullTitle) {
     }
 
     function downloadImage() {
-  const image = canvas.toDataURL("image/png");
-
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+  // Create a temporary canvas at a smaller size
+  const tempCanvas = document.createElement('canvas');
+  const scale = 0.5; // Reduce to 50% (1500x1500)
+  tempCanvas.width = canvas.width * scale;
+  tempCanvas.height = canvas.height * scale;
+
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+
+  const image = tempCanvas.toDataURL("image/png");
+
   if (isMobile) {
-    // Mobile workaround: Open in new tab instead
     const newWindow = window.open();
     if (newWindow) {
       newWindow.document.write('<img src="' + image + '" style="width:100%;">');
@@ -386,7 +394,6 @@ if (fullTitle) {
       alert("Pop-up blocked! Please allow pop-ups for this site.");
     }
   } else {
-    // Desktop: proceed with download
     const link = document.createElement('a');
     link.download = 'artwork.png';
     link.href = image;
