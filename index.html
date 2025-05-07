@@ -1,407 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Artwork Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @font-face {
-      font-family: 'Eurostile';
-      src: url('https://www.dropbox.com/scl/fi/yajd5vdn3swdghtyjf2jy/EurostileBQ-BoldExtended.otf?rlkey=729xg1dt2td53i03nrvpa00th&st=e5j926xp&dl=1') format('opentype');
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Eurostile', sans-serif;
-      background: #111;
-      color: white;
-      padding: 20px;
-      margin: 0;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .upload-zone {
-      border: 2px dashed #666;
-      padding: 30px;
-      background: #222;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .upload-zone.dragover {
-      background: #333;
-    }
-
-    .preview-image {
-      max-width: 100%;
-      margin-top: 10px;
-      border-radius: 5px;
-    }
-
-    #uploadStatus {
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    input[type="file"], input[type="text"], input[type="date"], select {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      margin: 10px 5px;
-      background-color: #3399ff;
-      color: white;
-      cursor: pointer;
-    }
-
-    canvas {
-      margin-top: 20px;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #444;
-      background: white;
-    }
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    label {
-      text-align: left;
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 10px;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Artwork Generator</h2>
-
-    <!-- Keep the file input OUTSIDE of the upload zone, and hidden -->
-    <input type="file" id="bgImage" accept="image/*">
-
-    <div class="upload-zone" id="dropzone">
-      <p>📂 Drag & drop your image here or click to upload</p>
-      <div id="uploadStatus"></div>
-      <img id="previewImage" class="preview-image" style="display:none;"/>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="home-page-app">
+      <div class="div">
+        <div class="play-buttons-live">
+          <div class="overlap">
+            <div class="live-frame">
+              <div class="overlap-group"><div class="live-frame-overlay"></div></div>
+            </div>
+            <div class="text-wrapper">Live</div>
+          </div>
+          <div class="archive-frame">
+            <div class="frame-wrapper">
+              <div class="frame"><div class="text-wrapper">Archive</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="player">
+          <div class="overlap-2">
+            <div class="text-wrapper-2">Now Playing: T. Couture</div>
+            <img class="play-arrow-filled" src="img/play-arrow-filled.svg" />
+          </div>
+        </div>
+        <div class="up-next">
+          <div class="up-next-text"><p class="p">Up Next: Syd Plays Bangers</p></div>
+        </div>
+        <div class="highlights">
+          <div class="highlight">
+            <p class="div-2">
+              <span class="span">12-1-24<br /></span> <span class="text-wrapper-3">SmushySlugs</span>
+            </p>
+            <div class="overlap-group-2">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Deep House</div>
+            </div>
+            <div class="overlap-3">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Minimal</div>
+            </div>
+            <img class="img" src="img/bndzbga003786-r1-008-1.png" />
+          </div>
+          <div class="highlight-2">
+            <p class="div-2">
+              <span class="span">1-14-25<br /></span> <span class="text-wrapper-3">Delaney Staack</span>
+            </p>
+            <div class="overlap-group-2">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Folk</div>
+            </div>
+            <div class="overlap-3">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Hip-Hop</div>
+            </div>
+            <img class="img" src="img/delaney-staack-1.png" />
+          </div>
+          <div class="highlight-3">
+            <p class="div-2">
+              <span class="span">12-8-24<br /></span> <span class="text-wrapper-3">HorseshoeCrab</span>
+            </p>
+            <div class="overlap-group-2">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Breaks</div>
+            </div>
+            <div class="overlap-3">
+              <div class="rectangle"></div>
+              <div class="text-wrapper-4">Shoegaze</div>
+            </div>
+            <img class="img" src="img/ah76-1.png" />
+          </div>
+          <div class="div-wrapper"><div class="text-wrapper-5">Highlights</div></div>
+        </div>
+        <div class="live-now-text">
+          <div class="live-now-t-couture-wrapper">
+            <p class="live-now-t-couture">Live Now:<br />T. Couture<br />12:00 - 13:00</p>
+          </div>
+          <img class="frame-2" src="img/frame-6.png" />
+        </div>
+        <div class="nav-bar">
+          <div class="home"><div class="text-wrapper-6">Listen</div></div>
+          <input class="search" placeholder="Search" type="text" />
+          <div class="contact"><div class="text-wrapper-6">Contact</div></div>
+        </div>
+        <header class="header">
+          <div class="overlap-4">
+            <div class="date-time-title">
+              <p class="DATE-TIME">
+                <span class="text-wrapper-7">Jan. 26th, 2025<br /></span> <span class="text-wrapper-8">12:35:45</span>
+              </p>
+            </div>
+            <div class="frame-3"></div>
+            <a href="https://discord.com/invite/anK6wuhV" target="_blank" rel="noopener noreferrer"
+              ><div class="text-wrapper-9">Chat</div></a
+            >
+          </div>
+          <div class="logo">
+            <div class="overlap-group-wrapper">
+              <div class="overlap-group-3">
+                <img class="logo-2" src="img/logo-2.png" />
+                <div class="page-title">SECTOR.FM</div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
     </div>
-
-    <div class="controls">
-      <label for="zoom">Zoom</label>
-      <input type="range" id="zoom" min="0.5" max="2" step="0.01" value="1">
-
-      <label for="offsetX">Horizontal Position</label>
-      <input type="range" id="offsetX" min="-750" max="750" step="1" value="0">
-
-      <label for="offsetY">Vertical Position</label>
-      <input type="range" id="offsetY" min="-750" max="750" step="1" value="0">
-    </div>
-
-    <label for="hostName">Host Name (optional)</label>
-    <input type="text" id="hostName" placeholder="Enter host name">
-
-    <label for="showName">Show Name (optional)</label>
-    <input type="text" id="showName" placeholder="Enter show name">
-
-    <label for="startTime">Start Time</label>
-    <select id="startTime">
-      <option value="">Select start time</option>
-      <option value="00:00">00:00</option>
-      <option value="01:00">01:00</option>
-      <option value="02:00">02:00</option>
-      <option value="03:00">03:00</option>
-      <option value="04:00">04:00</option>
-      <option value="05:00">05:00</option>
-      <option value="06:00">06:00</option>
-      <option value="07:00">07:00</option>
-      <option value="08:00">08:00</option>
-      <option value="09:00">09:00</option>
-      <option value="10:00">10:00</option>
-      <option value="11:00">11:00</option>
-      <option value="12:00">12:00</option>
-      <option value="13:00">13:00</option>
-      <option value="14:00">14:00</option>
-      <option value="15:00">15:00</option>
-      <option value="16:00">16:00</option>
-      <option value="17:00">17:00</option>
-      <option value="18:00">18:00</option>
-      <option value="19:00">19:00</option>
-      <option value="20:00">20:00</option>
-      <option value="21:00">21:00</option>
-      <option value="22:00">22:00</option>
-      <option value="23:00">23:00</option>
-    </select>
-
-    <label for="endTime">End Time</label>
-    <select id="endTime">
-      <option value="">Select end time</option>
-      <option value="00:00">00:00</option>
-      <option value="01:00">01:00</option>
-      <option value="02:00">02:00</option>
-      <option value="03:00">03:00</option>
-      <option value="04:00">04:00</option>
-      <option value="05:00">05:00</option>
-      <option value="06:00">06:00</option>
-      <option value="07:00">07:00</option>
-      <option value="08:00">08:00</option>
-      <option value="09:00">09:00</option>
-      <option value="10:00">10:00</option>
-      <option value="11:00">11:00</option>
-      <option value="12:00">12:00</option>
-      <option value="13:00">13:00</option>
-      <option value="14:00">14:00</option>
-      <option value="15:00">15:00</option>
-      <option value="16:00">16:00</option>
-      <option value="17:00">17:00</option>
-      <option value="18:00">18:00</option>
-      <option value="19:00">19:00</option>
-      <option value="20:00">20:00</option>
-      <option value="21:00">21:00</option>
-      <option value="22:00">22:00</option>
-      <option value="23:00">23:00</option>
-    </select>
-
-    <label for="showDate">Show Date</label>
-    <input type="date" id="showDate">
-
-    <button onclick="generateArtwork()">Generate</button>
-    <button onclick="downloadImage()">Download</button>
-
-    <canvas id="canvas" width="3000" height="3000"></canvas>
-  </div>
-
-  <script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('bgImage');
-    const previewImage = document.getElementById('previewImage');
-    const uploadStatus = document.getElementById('uploadStatus');
-
-    const templateImage = new Image();
-    templateImage.crossOrigin = "anonymous";
-    templateImage.src = 'https://www.dropbox.com/scl/fi/weuzungtbqt2hq47w3p3d/sector-generator-template-II.png?rlkey=xicqwddyfj0doru2o0lv2uyfe&st=u7pwjl9f&dl=1';
-
-    const logoImage = new Image();
-    logoImage.crossOrigin = "anonymous";
-    logoImage.src = 'https://i.imgur.com/aclWYDt.png';
-
-    let userImage = null;
-    let zoom = 1;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    document.getElementById('zoom').addEventListener('input', e => {
-      zoom = parseFloat(e.target.value);
-      generateArtwork();
-    });
-
-    document.getElementById('offsetX').addEventListener('input', e => {
-      offsetX = parseInt(e.target.value);
-      generateArtwork();
-    });
-
-    document.getElementById('offsetY').addEventListener('input', e => {
-      offsetY = parseInt(e.target.value);
-      generateArtwork();
-    });
-
-    dropzone.addEventListener('click', () => fileInput.click());
-    dropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropzone.classList.add('dragover');
-    });
-    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-    dropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropzone.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file) handleImage(file);
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) handleImage(file);
-    });
-
-    function handleImage(file) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        const img = new Image();
-        img.onload = function () {
-          userImage = img;
-          previewImage.src = img.src;
-          previewImage.style.display = 'block';
-          uploadStatus.textContent = "Image uploaded successfully.";
-          generateArtwork();
-        };
-        img.onerror = function () {
-          alert("Failed to load the image. Please try a different file.");
-        };
-        img.src = event.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function drawImageCover(img, ctx, canvasWidth, canvasHeight) {
-      const iw = img.width;
-      const ih = img.height;
-      const scale = Math.max(canvasWidth / iw, canvasHeight / ih) * zoom;
-      const x = (canvasWidth - iw * scale) / 2 + offsetX;
-      const y = (canvasHeight - ih * scale) / 2 + offsetY;
-      ctx.drawImage(img, x, y, iw * scale, ih * scale);
-    }
-
-    function formatDate(dateStr) {
-      const [year, month, day] = dateStr.split('-').map(Number);
-      const date = new Date(year, month - 1, day);
-      const dayAbbr = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'][date.getDay()];
-      const monthAbbr = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'][date.getMonth()];
-      const dayOfMonth = date.getDate();
-      return { dayAbbr, monthAbbr, dayOfMonth };
-    }
-
-    function generateArtwork() {
-      const hostName = document.getElementById('hostName').value.trim();
-      const showName = document.getElementById('showName').value.trim();
-      const showDate = document.getElementById('showDate').value;
-      const startTime = document.getElementById('startTime').value;
-      const endTime = document.getElementById('endTime').value;
-      const timeRange = (startTime && endTime) ? `${startTime} - ${endTime} EST` : "00:00 - 00:00 EST";
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (userImage) {
-        drawImageCover(userImage, ctx, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = "#333";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-
-      ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-
-      // Draw black corner bars manually
-      ctx.fillStyle = 'black';
-      ctx.fillRect(0, 1700, 225, 1575); // vertical bar (left)
-      ctx.fillRect(0, 2785, 1275, 225); // horizontal bar (bottom)
-
-      if (!logoImage.complete) {
-  logoImage.onload = () => generateArtwork();
-  return;
-}
-
-// ✅ Center and draw logo
-const logoWidth = 250;
-const logoHeight = 250;
-const logoX = -10;
-const logoY = 1690;
-ctx.drawImage(logoImage, logoX, logoY, logoWidth, logoHeight);
-
-      ctx.fillStyle = "white";
-      ctx.textAlign = "left";
-      ctx.font = "70px Eurostile";
-
-      if (showDate) {
-        const { dayAbbr, monthAbbr, dayOfMonth } = formatDate(showDate);
-        ctx.save();
-        ctx.translate(240, 2140);
-        ctx.rotate(-Math.PI / 2);
-        ctx.fillText(`${dayAbbr} ${monthAbbr} ${dayOfMonth}`, -660, -145);
-        ctx.fillText(timeRange, -660, -60);
-        ctx.restore();
-      }
-
-      const showNameInput = document.getElementById('showName').value.trim();
-const hostNameInput = document.getElementById('hostName').value.trim();
-
-let fullTitle = "";
-let fullTitleLength = 0;
-
-if (showNameInput && hostNameInput) {
-  fullTitle = `${showNameInput}: ${hostNameInput}`;
-  fullTitleLength = showNameInput.length + hostNameInput.length + 2; // +2 for ": "
-} else {
-  fullTitle = showNameInput || hostNameInput;
-  fullTitleLength = fullTitle.length;
-}
-
-console.log(`fullTitle: "${fullTitle}", length: ${fullTitleLength}`);
-if (fullTitleLength > 30) {
-  ctx.font = "bold 45px Eurostile";
-} else {
-  ctx.font = "bold 52px Eurostile";
-}
-
-if (fullTitle) {
-  ctx.fillText(fullTitle, 40, 2890);
-}
-      ctx.font = "50px Eurostile";
-      ctx.fillText("Listen Live or Archived on sector.fm", 40, 2955);
-    }
-
-    function downloadImage() {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-  // Create a temporary canvas at a smaller size
-  const tempCanvas = document.createElement('canvas');
-  const scale = 0.5; // Reduce to 50% (1500x1500)
-  tempCanvas.width = canvas.width * scale;
-  tempCanvas.height = canvas.height * scale;
-
-  const tempCtx = tempCanvas.getContext('2d');
-  tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
-
-  const image = tempCanvas.toDataURL("image/png");
-
-  if (isMobile) {
-    const newWindow = window.open();
-    if (newWindow) {
-      newWindow.document.write('<img src="' + image + '" style="width:100%;">');
-    } else {
-      alert("Pop-up blocked! Please allow pop-ups for this site.");
-    }
-  } else {
-    const link = document.createElement('a');
-    link.download = 'artwork.png';
-    link.href = image;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-}
-  </script>
-</body>
+  </body>
 </html>
