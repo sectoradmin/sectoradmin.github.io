@@ -33,6 +33,56 @@
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
       transform: scale(1.05);
     }
+
+    <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .player-container {
+      background: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .player-container h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #f04e23;
+    }
+
+    .metadata {
+      margin-bottom: 12px;
+      font-size: 0.95em;
+      line-height: 1.4em;
+    }
+
+    .metadata strong {
+      color: #aaa;
+    }
+
+    .description {
+      font-size: 0.85em;
+      color: #ccc;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
   </style>
 
   <link rel="stylesheet" href="stylesheet.css">
@@ -78,6 +128,14 @@
               <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause" />
             </svg>
           </div>
+
+            <!-- Integrated Metadata Display -->
+  <div class="player-info">
+    <div class="now-playing"><strong>Now Playing:</strong> <span id="trackInfo">Loading...</span></div>
+    <div class="show-title"><strong>Show:</strong> <span id="showInfo">Loading...</span></div>
+    <div class="show-desc" id="showDesc">Loading description...</div>
+  </div>
+</div>
 
           <div class="controls">
             <span>SECTOR.FM</span>
@@ -417,6 +475,110 @@
         // create your amazing enter animation here
       }
     }]
+  });
+</script>
+
+<script>
+  const PROXY = 'https://corsproxy.io/?';
+  const MAPPING_URL = PROXY + encodeURIComponent(
+    'https://docs.google.com/spreadsheets/d/1nCFcaCWKtijfna6Jmu5Z0Tk-olGo_yCS2v2PSUinMr0/gviz/tq?tqx=out:json'
+  );
+
+  async function getSheetIdForShow(showName) {
+    try {
+      const res = await fetch(MAPPING_URL);
+      const text = await res.text();
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      const rows = json.table.rows;
+
+      for (const row of rows) {
+        const name = row.c[0]?.v?.trim();
+        const url = row.c[1]?.v?.trim();
+        if (name && url && name.toLowerCase() === showName.toLowerCase()) {
+          const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+          return match ? match[1] : null;
+        }
+      }
+    } catch (err) {
+      console.error("Error reading mapping sheet:", err);
+    }
+    return null;
+  }
+
+  async function fetchNowPlayingFromSheet(sheetId) {
+    try {
+      const sheetURL = PROXY + encodeURIComponent(
+        `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`
+      );
+      const res = await fetch(sheetURL);
+      const text = await res.text();
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      const rows = json.table.rows;
+
+      let latest = null;
+      for (let i = rows.length - 1; i >= 0; i--) {
+        const artist = rows[i].c[1]?.v?.trim(); // Column B
+        const track = rows[i].c[3]?.v?.trim(); // Column D
+        if (artist || track) {
+          latest = { artist, track };
+          break;
+        }
+      }
+
+      if (latest) {
+        const display = `${latest.artist || 'Unknown Artist'} – ${latest.track || 'Untitled Track'}`;
+        document.getElementById('trackInfo').textContent = display;
+      } else {
+        document.getElementById('trackInfo').textContent = 'No track data';
+      }
+    } catch (err) {
+      console.error("Error fetching track from sheet:", err);
+      document.getElementById('trackInfo').textContent = 'Unavailable';
+    }
+  }
+
+  async function updateNowPlaying() {
+    try {
+      const res = await fetch('https://sectorfm.airtime.pro/api/live-info-v2');
+      const data = await res.json();
+
+      const show = data.shows?.current;
+      const showName = show?.name || 'No Show Info';
+      const showDesc = show?.description || '';
+      const isLive = show?.auto_dj === false;
+
+      document.getElementById('showInfo').textContent = showName;
+      document.getElementById('showDesc').textContent = showDesc;
+
+      if (isLive) {
+        const sheetId = await getSheetIdForShow(showName);
+        if (sheetId) {
+          await fetchNowPlayingFromSheet(sheetId);
+          return;
+        }
+      }
+
+      const track = data.tracks.current?.metadata || {};
+      const fallback = track.track_title && track.artist_name
+        ? `${track.artist_name} – ${track.track_title}`
+        : data.tracks.current?.name || 'Unknown Track';
+      document.getElementById('trackInfo').textContent = fallback;
+
+    } catch (err) {
+      console.error('Error fetching show info:', err);
+      document.getElementById('trackInfo').textContent = 'Unavailable';
+      document.getElementById('showInfo').textContent = 'Unavailable';
+      document.getElementById('showDesc').textContent = '';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    GreenAudioPlayer.init({
+      selector: '.green-audio-player',
+      stopOthersOnPlay: true
+    });
+    updateNowPlaying();
+    setInterval(updateNowPlaying, 30000);
   });
 </script>
 
