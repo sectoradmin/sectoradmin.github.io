@@ -1,114 +1,425 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="home-page-app">
-      <div class="div">
-        <div class="play-buttons-live">
-          <div class="overlap">
-            <div class="live-frame">
-              <div class="overlap-group"><div class="live-frame-overlay"></div></div>
-            </div>
-            <div class="text-wrapper">Live</div>
+
+<head>
+  <meta charset=utf-8">
+  <style>
+    p {
+      text-align: center;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      font-size: 16px;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-button:hover {
+      background-color: #0056b3;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+    }
+  </style>
+
+  <link rel="stylesheet" href="assets/css/stylesheet.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+
+  <script>
+    // create a function to update the date and time
+    function updateDateTime() {
+      // create a new `Date` object
+      const now = new Date();
+
+      // get the current date and time as a string
+      const currentDateTime = now.toLocaleString('en-GB');
+
+      // update the `textContent` property of the `span` element with the `id` of `datetime`
+      document.querySelector('#datetime').textContent = currentDateTime;
+    }
+
+    // call the `updateDateTime` function every second
+    setInterval(updateDateTime, 1000);
+  </script>
+</head>
+
+<body data-barba="wrapper">
+  <video autoplay loop muted playsinline id="background-video">
+    <source src="content/Sector Videos.mp4" type="video/mp4">
+  </video>
+  <header class="header">
+    <figure>
+      <div class="holder">
+        <a href="https://sector.fm">
+          <img class="logo-img" src="https://sector.fm/media/site/1d5a980eb2-1714597309/3_logo_type_box.wht.blk.png" />
+        </a>
+        <br>
+        <span id="datetime"></span>
+        <br>
+        <div class="audio green-audio-player">
+          <div class="loading">
+            <div class="spinner"></div>
           </div>
-          <div class="archive-frame">
-            <div class="frame-wrapper">
-              <div class="frame"><div class="text-wrapper">Archive</div></div>
+          <div class="play-pause-btn">
+            <svg xmlns="https://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+              <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause" />
+            </svg>
+          </div>
+
+          <div class="controls">
+            <span>SECTOR.FM</span>
+            <div class="slider" data-direction="horizontal">
             </div>
           </div>
-        </div>
-        <div class="player">
-          <div class="overlap-2">
-            <div class="text-wrapper-2">Now Playing: T. Couture</div>
-            <img class="play-arrow-filled" src="img/play-arrow-filled.svg" />
-          </div>
-        </div>
-        <div class="up-next">
-          <div class="up-next-text"><p class="p">Up Next: Syd Plays Bangers</p></div>
-        </div>
-        <div class="highlights">
-          <div class="highlight">
-            <p class="div-2">
-              <span class="span">12-1-24<br /></span> <span class="text-wrapper-3">SmushySlugs</span>
-            </p>
-            <div class="overlap-group-2">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Deep House</div>
+
+          <div class="volume">
+            <div class="volume-btn">
+              <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="#566574" fill-rule="evenodd"
+                  d="M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z"
+                  id="speaker" />
+              </svg>
             </div>
-            <div class="overlap-3">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Minimal</div>
-            </div>
-            <img class="img" src="img/bndzbga003786-r1-008-1.png" />
-          </div>
-          <div class="highlight-2">
-            <p class="div-2">
-              <span class="span">1-14-25<br /></span> <span class="text-wrapper-3">Delaney Staack</span>
-            </p>
-            <div class="overlap-group-2">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Folk</div>
-            </div>
-            <div class="overlap-3">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Hip-Hop</div>
-            </div>
-            <img class="img" src="img/delaney-staack-1.png" />
-          </div>
-          <div class="highlight-3">
-            <p class="div-2">
-              <span class="span">12-8-24<br /></span> <span class="text-wrapper-3">HorseshoeCrab</span>
-            </p>
-            <div class="overlap-group-2">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Breaks</div>
-            </div>
-            <div class="overlap-3">
-              <div class="rectangle"></div>
-              <div class="text-wrapper-4">Shoegaze</div>
-            </div>
-            <img class="img" src="img/ah76-1.png" />
-          </div>
-          <div class="div-wrapper"><div class="text-wrapper-5">Highlights</div></div>
-        </div>
-        <div class="live-now-text">
-          <div class="live-now-t-couture-wrapper">
-            <p class="live-now-t-couture">Live Now:<br />T. Couture<br />12:00 - 13:00</p>
-          </div>
-          <img class="frame-2" src="img/frame-6.png" />
-        </div>
-        <div class="nav-bar">
-          <div class="home"><div class="text-wrapper-6">Listen</div></div>
-          <input class="search" placeholder="Search" type="text" />
-          <div class="contact"><div class="text-wrapper-6">Contact</div></div>
-        </div>
-        <header class="header">
-          <div class="overlap-4">
-            <div class="date-time-title">
-              <p class="DATE-TIME">
-                <span class="text-wrapper-7">Jan. 26th, 2025<br /></span> <span class="text-wrapper-8">12:35:45</span>
-              </p>
-            </div>
-            <div class="frame-3"></div>
-            <a href="https://discord.com/invite/anK6wuhV" target="_blank" rel="noopener noreferrer"
-              ><div class="text-wrapper-9">Chat</div></a
-            >
-          </div>
-          <div class="logo">
-            <div class="overlap-group-wrapper">
-              <div class="overlap-group-3">
-                <img class="logo-2" src="img/logo-2.png" />
-                <div class="page-title">SECTOR.FM</div>
+            <div class="volume-controls hidden">
+              <div class="slider" data-direction="vertical">
+                <div class="progress">
+                  <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+                </div>
               </div>
             </div>
           </div>
-        </header>
-      </div>
-    </div>
-  </body>
+
+          <audio crossorigin>
+            <source
+              src="https://sectorfm.out.airtime.pro/sectorfm_a?_ga=2.90388762.1091420740.1697553650-189609651.1695669989">
+          </audio>
+
+          <!-- <audio controls autoplay
+          src="https://sectorfm.out.airtime.pro/sectorfm_a?_ga=2.90388762.1091420740.1697553650-189609651.1695669989"></audio> -->
+        </div>
+
+
+    </figure>
+    <br>
+    <nav>
+      <ul id="nav" class="nav-links">
+
+                            <li class="nav-link">
+            <a href="https://sector.fm/residents">
+              Residents            </a>
+          </li>
+                                      <li class="nav-link">
+            <a href="https://sector.fm/schedules">
+              Schedule            </a>
+          </li>
+                                      <li class="nav-link">
+            <a href="https://sector.fm/staffpicks">
+              Staff Picks            </a>
+          </li>
+                                            <li class="nav-link">
+          <a href="https://www.mixcloud.com/sectorfm/" target="_blank">
+            Archives
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main data-barba="container" data-barba-namespace="home" class="main">
+
+<div class="schedule">
+    <h2 class="schedule-title">
+        Wednesday, May 7 Schedule    </h2>
+    <li>
+        <!--                     on
+         -->
+        11:00 - 12:00 Myspace Top 8 Radio: Phia        <br>
+    </li>
+    <li>
+        12:00 - 13:00 Guest Mix: Slight Shifts        <br>
+    </li>
+    <li>
+        13:00 - 14:00 Syd Plays Bangers        <br>
+    </li>
+    <li>
+        14:00 - 15:00 Angels Only: Vom Dog        <br>
+    </li>
+    <li>
+        15:00 - 16:00 Sól, selecta        <br>
+    </li>
+    <li>
+        16:00 - 17:00 Highlights: Post Physique: Deja-Denice        <br>
+    </li>
+    <li>
+        17:00 - 18:00 DJ Spur        <br>
+    </li>
+    <li>
+        18:00 - 19:00 The Lab: Chemical Lex        <br>
+    </li>
+    <li>
+        19:00 - 20:00 Champagne Radio: Johnny Champagne        <br>
+    </li>
+    <li>
+        20:00 - 21:00 SVNTOS        <br>
+    </li>
+    <li>
+                <br>
+    </li>
+    <li>
+                <br>
+    </li>
+
+</div>
+</main>
+<footer>
+<a href="https://discord.gg/59R4JxsPap" target=”_blank” class="floating-button">SECTOR COMMUNITY CHAT</a>
+  <span class="sector-tagline">Sector is an independent radio station broadcasting from the Gulf Coast of
+    Florida.</span>
+  <div class="footer">
+    <a href="mailto:admin@sector.fm">
+      <img src="https://sector.fm/media/site/99f0801590-1714597316/2_mail.png" class="footer-image-email" />
+    </a>
+    <a href="https://instagram.com/sector.fm" target="_blank">
+      <img src="https://sector.fm/media/site/afef45d2ff-1714597315/1_instagram.png" class="footer-image-insta" />
+    </a>
+  </div>
+</footer>
+<script>
+  var audioPlayer = document.querySelector('.green-audio-player');
+  var playPause = audioPlayer.querySelector('#playPause');
+  var playpauseBtn = audioPlayer.querySelector('.play-pause-btn');
+  var loading = audioPlayer.querySelector('.loading');
+  var progress = audioPlayer.querySelector('.progress');
+  var sliders = audioPlayer.querySelectorAll('.slider');
+  var volumeBtn = audioPlayer.querySelector('.volume-btn');
+  var volumeControls = audioPlayer.querySelector('.volume-controls');
+  var volumeProgress = volumeControls.querySelector('.slider .progress');
+  var player = audioPlayer.querySelector('audio');
+  var currentTime = audioPlayer.querySelector('.current-time');
+  var totalTime = audioPlayer.querySelector('.total-time');
+  var speaker = audioPlayer.querySelector('#speaker');
+
+  var draggableClasses = ['pin'];
+  var currentlyDragged = null;
+
+  window.addEventListener('mousedown', function (event) {
+
+    if (!isDraggable(event.target)) return false;
+
+    currentlyDragged = event.target;
+    let handleMethod = currentlyDragged.dataset.method;
+
+    this.addEventListener('mousemove', window[handleMethod], false);
+
+    window.addEventListener('mouseup', () => {
+      currentlyDragged = false;
+      window.removeEventListener('mousemove', window[handleMethod], false);
+    }, false);
+  });
+
+  playpauseBtn.addEventListener('click', togglePlay);
+  player.addEventListener('timeupdate', updateProgress);
+  player.addEventListener('volumechange', updateVolume);
+  player.addEventListener('loadedmetadata', () => {
+    makePlay();
+    totalTime.textContent = formatTime(player.duration);
+  });
+  player.addEventListener('canplay', makePlay);
+  player.addEventListener('ended', function () {
+    playPause.attributes.d.value = "M18 12L0 24V0";
+    player.currentTime = 0;
+  });
+
+  volumeBtn.addEventListener('click', () => {
+    volumeBtn.classList.toggle('open');
+    volumeControls.classList.toggle('hidden');
+  })
+
+  window.addEventListener('resize', directionAware);
+
+  sliders.forEach(slider => {
+    let pin = slider.querySelector('.pin');
+    slider.addEventListener('click', window[pin.dataset.method]);
+  });
+
+  directionAware();
+
+  function isDraggable(el) {
+    let canDrag = false;
+    let classes = Array.from(el.classList);
+    draggableClasses.forEach(draggable => {
+      if (classes.indexOf(draggable) !== -1)
+        canDrag = true;
+    })
+    return canDrag;
+  }
+
+  function inRange(event) {
+    let rangeBox = getRangeBox(event);
+    let rect = rangeBox.getBoundingClientRect();
+    let direction = rangeBox.dataset.direction;
+    if (direction == 'horizontal') {
+      var min = rangeBox.offsetLeft;
+      var max = min + rangeBox.offsetWidth;
+      if (event.clientX < min || event.clientX > max) return false;
+    } else {
+      var min = rect.top;
+      var max = min + rangeBox.offsetHeight;
+      if (event.clientY < min || event.clientY > max) return false;
+    }
+    return true;
+  }
+
+  function updateProgress() {
+    var current = player.currentTime;
+    var percent = (current / player.duration) * 100;
+    progress.style.width = percent + '%';
+
+    currentTime.textContent = formatTime(current);
+  }
+
+  function updateVolume() {
+    volumeProgress.style.height = player.volume * 100 + '%';
+    if (player.volume >= 0.5) {
+      speaker.attributes.d.value = 'M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z';
+    } else if (player.volume < 0.5 && player.volume > 0.05) {
+      speaker.attributes.d.value = 'M0 7.667v8h5.333L12 22.333V1L5.333 7.667M17.333 11.373C17.333 9.013 16 6.987 14 6v10.707c2-.947 3.333-2.987 3.333-5.334z';
+    } else if (player.volume <= 0.05) {
+      speaker.attributes.d.value = 'M0 7.667v8h5.333L12 22.333V1L5.333 7.667';
+    }
+  }
+
+  function getRangeBox(event) {
+    let rangeBox = event.target;
+    let el = currentlyDragged;
+    if (event.type == 'click' && isDraggable(event.target)) {
+      rangeBox = event.target.parentElement.parentElement;
+    }
+    if (event.type == 'mousemove') {
+      rangeBox = el.parentElement.parentElement;
+    }
+    return rangeBox;
+  }
+
+  function getCoefficient(event) {
+    let slider = getRangeBox(event);
+    let rect = slider.getBoundingClientRect();
+    let K = 0;
+    if (slider.dataset.direction == 'horizontal') {
+
+      let offsetX = event.clientX - slider.offsetLeft;
+      let width = slider.clientWidth;
+      K = offsetX / width;
+
+    } else if (slider.dataset.direction == 'vertical') {
+
+      let height = slider.clientHeight;
+      var offsetY = event.clientY - rect.top;
+      K = 1 - offsetY / height;
+
+    }
+    return K;
+  }
+
+  function rewind(event) {
+    if (inRange(event)) {
+      player.currentTime = player.duration * getCoefficient(event);
+    }
+  }
+
+  function changeVolume(event) {
+    if (inRange(event)) {
+      player.volume = getCoefficient(event);
+    }
+  }
+
+  function formatTime(time) {
+    var min = Math.floor(time / 60);
+    var sec = Math.floor(time % 60);
+    return min + ':' + ((sec < 10) ? ('0' + sec) : sec);
+  }
+
+  function togglePlay() {
+    if (player.paused) {
+      playPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z";
+      player.play();
+    } else {
+      playPause.attributes.d.value = "M18 12L0 24V0";
+      player.pause();
+    }
+  }
+
+  function makePlay() {
+    playpauseBtn.style.display = 'block';
+    loading.style.display = 'none';
+  }
+
+  function directionAware() {
+    if (window.innerHeight < 250) {
+      volumeControls.style.bottom = '-54px';
+      volumeControls.style.left = '54px';
+    } else if (audioPlayer.offsetTop < 154) {
+      volumeControls.style.bottom = '-164px';
+      volumeControls.style.left = '-3px';
+    } else {
+      volumeControls.style.bottom = '52px';
+      volumeControls.style.left = '-3px';
+    }
+  }
+</script>
+
+<!-- <script>
+  // Check if mobile
+  var screenWidth = window.screen.width;
+
+  if (screenWidth >= 768) {
+
+    // If condition is true, load Chatango script
+    var chatangoScript = document.createElement('script');
+    chatangoScript.id = 'cid0020000373695931384';
+    chatangoScript.setAttribute('data-cfasync', 'false');
+    chatangoScript.async = true;
+    chatangoScript.src = '//st.chatango.com/js/gz/emb.js';
+    chatangoScript.style.width = '200px';
+    chatangoScript.style.height = '300px';
+    chatangoScript.innerHTML = '{ "handle": "sectorfmchat", "arch": "js", "styles": { "a": "000000", "b": 100, "c": "FFFFFF", "d": "FFFFFF", "k": "000000", "l": "000000", "m": "000000", "n": "FFFFFF", "p": "10", "q": "000000", "r": 100, "pos": "br", "cv": 1, "cvbg": "000000", "cvw": 200, "cvh": 30, "ticker": 1, "fwtickm": 1 } }';
+    document.head.appendChild(chatangoScript);
+  } 
+</script> -->
+<script src="https://unpkg.com/@barba/core"></script>
+
+<!-- jsdelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+
+<!-- init barba with a simple opacity transition -->
+<script type="text/javascript">
+  barba.init({
+    transitions: [{
+      name: 'default-transition',
+      leave() {
+        // create your stunning leave animation here
+      },
+      enter() {
+        // create your amazing enter animation here
+      }
+    }]
+  });
+</script>
+
+</body>
+
 </html>
