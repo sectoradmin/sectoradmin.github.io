@@ -471,12 +471,17 @@ async function updateNowPlaying() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  GreenAudioPlayer.init({
-    selector: '.green-audio-player',
-    stopOthersOnPlay: true
+    if (typeof GreenAudioPlayer !== 'undefined') {
+      GreenAudioPlayer.init({
+        selector: '.green-audio-player',
+        stopOthersOnPlay: true
+      });
+    } else {
+      console.error("GreenAudioPlayer script failed to load.");
+    }
+
+    updateNowPlaying();
+    setInterval(updateNowPlaying, 30000);
   });
-  updateNowPlaying();
-  setInterval(updateNowPlaying, 30000);
-});
 </script></body>
 </html>
