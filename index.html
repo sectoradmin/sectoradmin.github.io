@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html>
 
+<html>
 <head>
-  <meta charset=utf-8">
-  <style>
+<meta charset="utf-8"/>
+<style>
     p {
       text-align: center;
     }
@@ -33,62 +33,10 @@
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
       transform: scale(1.05);
     }
-
-    <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    .player-container {
-      background: #1c1c1c;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      padding: 20px;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .player-container h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      color: #f04e23;
-    }
-
-    .metadata {
-      margin-bottom: 12px;
-      font-size: 0.95em;
-      line-height: 1.4em;
-    }
-
-    .metadata strong {
-      color: #aaa;
-    }
-
-    .description {
-      font-size: 0.85em;
-      color: #ccc;
-      font-style: italic;
-      margin-top: 6px;
-    }
-
-    audio {
-      width: 100%;
-      margin-top: 10px;
-    }
   </style>
-
-  <link rel="stylesheet" href="assets/css/stylesheet.css">
-  <link rel="stylesheet" href="assets/css/index.css">
-
-  <script>
+<link href="assets/css/stylesheet.css" rel="stylesheet"/>
+<link href="assets/css/index.css" rel="stylesheet"/>
+<script>
     // create a function to update the date and time
     function updateDateTime() {
       // create a new `Date` object
@@ -105,156 +53,111 @@
     setInterval(updateDateTime, 1000);
   </script>
 </head>
-
 <body data-barba="wrapper">
-  <video autoplay loop muted playsinline id="background-video">
-    <source src="content/Sector Videos.mp4" type="video/mp4">
-  </video>
-  <header class="header">
-    <figure>
-      <div class="holder">
-        <a href="https://sector.fm">
-          <img class="logo-img" src="https://sector.fm/media/site/1d5a980eb2-1714597309/3_logo_type_box.wht.blk.png" />
-        </a>
-        <br>
-        <span id="datetime"></span>
-        <br>
-        <div class="audio green-audio-player">
-          <div class="loading">
-            <div class="spinner"></div>
-          </div>
-          <div class="play-pause-btn">
-            <svg xmlns="https://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
-              <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause" />
-            </svg>
-          </div>
+<video autoplay="" id="background-video" loop="" muted="" playsinline="">
+<source src="content/Sector Videos.mp4" type="video/mp4"/>
+</video>
+<header class="header">
+<figure>
+<div class="holder">
+<a href="https://sector.fm">
+<img class="logo-img" src="https://sector.fm/media/site/1d5a980eb2-1714597309/3_logo_type_box.wht.blk.png"/>
+</a>
+<br/>
+<span id="datetime"></span>
+<br/>
 
-            <!-- Integrated Metadata Display -->
-  <div class="player-info">
-    <div class="now-playing"><strong>Now Playing:</strong> <span id="trackInfo">Loading...</span></div>
-    <div class="show-title"><strong>Show:</strong> <span id="showInfo">Loading...</span></div>
-    <div class="show-desc" id="showDesc">Loading description...</div>
-  </div>
+<div class="green-audio-player" id="playerUI">
+<audio crossorigin="" preload="none">
+<source src="https://sectorfm.out.airtime.pro/sectorfm_a" type="audio/mpeg"/>
+</audio>
+<div class="player-info">
+<div class="now-playing"><strong>Now Playing:</strong> <span id="trackInfo">Loading...</span></div>
+<div class="show-title"><strong>Show:</strong> <span id="showInfo">Loading...</span></div>
+<div class="show-desc" id="showDesc">Loading description...</div>
+</div>
 </div>
 
-          <div class="controls">
-            <span>SECTOR.FM</span>
-            <div class="slider" data-direction="horizontal">
-            </div>
-          </div>
-
-          <div class="volume">
-            <div class="volume-btn">
-              <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="#566574" fill-rule="evenodd"
-                  d="M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z"
-                  id="speaker" />
-              </svg>
-            </div>
-            <div class="volume-controls hidden">
-              <div class="slider" data-direction="vertical">
-                <div class="progress">
-                  <div class="pin" id="volume-pin" data-method="changeVolume"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <audio crossorigin>
-            <source
-              src="https://sectorfm.out.airtime.pro/sectorfm_a?_ga=2.90388762.1091420740.1697553650-189609651.1695669989">
-          </audio>
-
-          <!-- <audio controls autoplay
-          src="https://sectorfm.out.airtime.pro/sectorfm_a?_ga=2.90388762.1091420740.1697553650-189609651.1695669989"></audio> -->
-        </div>
-
-
-    </figure>
-    <br>
-    <nav>
-      <ul id="nav" class="nav-links">
-
-                            <li class="nav-link">
-            <a href="https://sector.fm/residents">
+</div></figure>
+<br/>
+<nav>
+<ul class="nav-links" id="nav">
+<li class="nav-link">
+<a href="https://sector.fm/residents">
               Residents            </a>
-          </li>
-                                      <li class="nav-link">
-            <a href="https://sector.fm/schedules">
+</li>
+<li class="nav-link">
+<a href="https://sector.fm/schedules">
               Schedule            </a>
-          </li>
-                                      <li class="nav-link">
-            <a href="https://sector.fm/staffpicks">
+</li>
+<li class="nav-link">
+<a href="https://sector.fm/staffpicks">
               Staff Picks            </a>
-          </li>
-                                            <li class="nav-link">
-          <a href="https://www.mixcloud.com/sectorfm/" target="_blank">
+</li>
+<li class="nav-link">
+<a href="https://www.mixcloud.com/sectorfm/" target="_blank">
             Archives
           </a>
-        </li>
-      </ul>
-    </nav>
-
-  </header>
-
-  <main data-barba="container" data-barba-namespace="home" class="main">
-
+</li>
+</ul>
+</nav>
+</header>
+<main class="main" data-barba="container" data-barba-namespace="home">
 <div class="schedule">
-    <h2 class="schedule-title">
+<h2 class="schedule-title">
         Wednesday, May 7 Schedule    </h2>
-    <li>
-        <!--                     on
-         -->
-        11:00 - 12:00 Myspace Top 8 Radio: Phia        <br>
-    </li>
-    <li>
-        12:00 - 13:00 Guest Mix: Slight Shifts        <br>
-    </li>
-    <li>
-        13:00 - 14:00 Syd Plays Bangers        <br>
-    </li>
-    <li>
-        14:00 - 15:00 Angels Only: Vom Dog        <br>
-    </li>
-    <li>
-        15:00 - 16:00 Sól, selecta        <br>
-    </li>
-    <li>
-        16:00 - 17:00 Highlights: Post Physique: Deja-Denice        <br>
-    </li>
-    <li>
-        17:00 - 18:00 DJ Spur        <br>
-    </li>
-    <li>
-        18:00 - 19:00 The Lab: Chemical Lex        <br>
-    </li>
-    <li>
-        19:00 - 20:00 Champagne Radio: Johnny Champagne        <br>
-    </li>
-    <li>
-        20:00 - 21:00 SVNTOS        <br>
-    </li>
-    <li>
-                <br>
-    </li>
-    <li>
-                <br>
-    </li>
-
+<li>
+<!--             not on
+                 -->
+        11:00 - 12:00 Myspace Top 8 Radio: Phia        <br/>
+</li>
+<li>
+        12:00 - 13:00 Guest Mix: Slight Shifts        <br/>
+</li>
+<li>
+        13:00 - 14:00 Syd Plays Bangers        <br/>
+</li>
+<li>
+        14:00 - 15:00 Angels Only: Vom Dog        <br/>
+</li>
+<li>
+        15:00 - 16:00 Sól, selecta        <br/>
+</li>
+<li>
+        16:00 - 17:00 Highlights: Post Physique: Deja-Denice        <br/>
+</li>
+<li>
+        17:00 - 18:00 DJ Spur        <br/>
+</li>
+<li>
+        18:00 - 19:00 The Lab: Chemical Lex        <br/>
+</li>
+<li>
+        19:00 - 20:00 Champagne Radio: Johnny Champagne        <br/>
+</li>
+<li>
+        20:00 - 21:00 SVNTOS        <br/>
+</li>
+<li>
+<br/>
+</li>
+<li>
+<br/>
+</li>
 </div>
 </main>
 <footer>
-<a href="https://discord.gg/59R4JxsPap" target=”_blank” class="floating-button">SECTOR COMMUNITY CHAT</a>
-  <span class="sector-tagline">Sector is an independent radio station broadcasting from the Gulf Coast of
+<a class="floating-button" href="https://discord.gg/59R4JxsPap" target="”_blank”">SECTOR COMMUNITY CHAT</a>
+<span class="sector-tagline">Sector is an independent radio station broadcasting from the Gulf Coast of
     Florida.</span>
-  <div class="footer">
-    <a href="mailto:admin@sector.fm">
-      <img src="https://sector.fm/media/site/99f0801590-1714597316/2_mail.png" class="footer-image-email" />
-    </a>
-    <a href="https://instagram.com/sector.fm" target="_blank">
-      <img src="https://sector.fm/media/site/afef45d2ff-1714597315/1_instagram.png" class="footer-image-insta" />
-    </a>
-  </div>
+<div class="footer">
+<a href="mailto:admin@sector.fm">
+<img class="footer-image-email" src="https://sector.fm/media/site/99f0801590-1714597316/2_mail.png"/>
+</a>
+<a href="https://instagram.com/sector.fm" target="_blank">
+<img class="footer-image-insta" src="https://sector.fm/media/site/afef45d2ff-1714597315/1_instagram.png"/>
+</a>
+</div>
 </footer>
 <script>
   var audioPlayer = document.querySelector('.green-audio-player');
@@ -439,7 +342,6 @@
     }
   }
 </script>
-
 <!-- <script>
   // Check if mobile
   var screenWidth = window.screen.width;
@@ -459,10 +361,8 @@
   } 
 </script> -->
 <script src="https://unpkg.com/@barba/core"></script>
-
 <!-- jsdelivr -->
 <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
-
 <!-- init barba with a simple opacity transition -->
 <script type="text/javascript">
   barba.init({
@@ -477,111 +377,106 @@
     }]
   });
 </script>
+<script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script><script>
+const PROXY = 'https://corsproxy.io/?';
+const MAPPING_URL = PROXY + encodeURIComponent(
+  'https://docs.google.com/spreadsheets/d/1nCFcaCWKtijfna6Jmu5Z0Tk-olGo_yCS2v2PSUinMr0/gviz/tq?tqx=out:json'
+);
 
-<script>
-  const PROXY = 'https://corsproxy.io/?';
-  const MAPPING_URL = PROXY + encodeURIComponent(
-    'https://docs.google.com/spreadsheets/d/1nCFcaCWKtijfna6Jmu5Z0Tk-olGo_yCS2v2PSUinMr0/gviz/tq?tqx=out:json'
-  );
-
-  async function getSheetIdForShow(showName) {
-    try {
-      const res = await fetch(MAPPING_URL);
-      const text = await res.text();
-      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      const rows = json.table.rows;
-
-      for (const row of rows) {
-        const name = row.c[0]?.v?.trim();
-        const url = row.c[1]?.v?.trim();
-        if (name && url && name.toLowerCase() === showName.toLowerCase()) {
-          const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
-          return match ? match[1] : null;
-        }
+async function getSheetIdForShow(showName) {
+  try {
+    const res = await fetch(MAPPING_URL);
+    const text = await res.text();
+    const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+    const rows = json.table.rows;
+    for (const row of rows) {
+      const name = row.c[0]?.v?.trim();
+      const url = row.c[1]?.v?.trim();
+      if (name && url && name.toLowerCase() === showName.toLowerCase()) {
+        const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+        return match ? match[1] : null;
       }
-    } catch (err) {
-      console.error("Error reading mapping sheet:", err);
     }
-    return null;
+  } catch (err) {
+    console.error("Error reading mapping sheet:", err);
   }
+  return null;
+}
 
-  async function fetchNowPlayingFromSheet(sheetId) {
-    try {
-      const sheetURL = PROXY + encodeURIComponent(
-        `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`
-      );
-      const res = await fetch(sheetURL);
-      const text = await res.text();
-      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      const rows = json.table.rows;
+async function fetchNowPlayingFromSheet(sheetId) {
+  try {
+    const sheetURL = PROXY + encodeURIComponent(
+      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`
+    );
+    const res = await fetch(sheetURL);
+    const text = await res.text();
+    const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+    const rows = json.table.rows;
 
-      let latest = null;
-      for (let i = rows.length - 1; i >= 0; i--) {
-        const artist = rows[i].c[1]?.v?.trim(); // Column B
-        const track = rows[i].c[3]?.v?.trim(); // Column D
-        if (artist || track) {
-          latest = { artist, track };
-          break;
-        }
+    let latest = null;
+    for (let i = rows.length - 1; i >= 0; i--) {
+      const artist = rows[i].c[1]?.v?.trim(); // Column B
+      const track = rows[i].c[3]?.v?.trim(); // Column D
+      if (artist || track) {
+        latest = { artist, track };
+        break;
       }
-
-      if (latest) {
-        const display = `${latest.artist || 'Unknown Artist'} – ${latest.track || 'Untitled Track'}`;
-        document.getElementById('trackInfo').textContent = display;
-      } else {
-        document.getElementById('trackInfo').textContent = 'No track data';
-      }
-    } catch (err) {
-      console.error("Error fetching track from sheet:", err);
-      document.getElementById('trackInfo').textContent = 'Unavailable';
     }
-  }
 
-  async function updateNowPlaying() {
-    try {
-      const res = await fetch('https://sectorfm.airtime.pro/api/live-info-v2');
-      const data = await res.json();
-
-      const show = data.shows?.current;
-      const showName = show?.name || 'No Show Info';
-      const showDesc = show?.description || '';
-      const isLive = show?.auto_dj === false;
-
-      document.getElementById('showInfo').textContent = showName;
-      document.getElementById('showDesc').textContent = showDesc;
-
-      if (isLive) {
-        const sheetId = await getSheetIdForShow(showName);
-        if (sheetId) {
-          await fetchNowPlayingFromSheet(sheetId);
-          return;
-        }
-      }
-
-      const track = data.tracks.current?.metadata || {};
-      const fallback = track.track_title && track.artist_name
-        ? `${track.artist_name} – ${track.track_title}`
-        : data.tracks.current?.name || 'Unknown Track';
-      document.getElementById('trackInfo').textContent = fallback;
-
-    } catch (err) {
-      console.error('Error fetching show info:', err);
-      document.getElementById('trackInfo').textContent = 'Unavailable';
-      document.getElementById('showInfo').textContent = 'Unavailable';
-      document.getElementById('showDesc').textContent = '';
+    if (latest) {
+      const display = `${latest.artist || 'Unknown Artist'} – ${latest.track || 'Untitled Track'}`;
+      document.getElementById('trackInfo').textContent = display;
+    } else {
+      document.getElementById('trackInfo').textContent = 'No track data';
     }
+  } catch (err) {
+    console.error("Error fetching track from sheet:", err);
+    document.getElementById('trackInfo').textContent = 'Unavailable';
   }
+}
 
-  window.addEventListener('DOMContentLoaded', () => {
-    GreenAudioPlayer.init({
-      selector: '.green-audio-player',
-      stopOthersOnPlay: true
-    });
-    updateNowPlaying();
-    setInterval(updateNowPlaying, 30000);
+async function updateNowPlaying() {
+  try {
+    const res = await fetch('https://sectorfm.airtime.pro/api/live-info-v2');
+    const data = await res.json();
+
+    const show = data.shows?.current;
+    const showName = show?.name || 'No Show Info';
+    const showDesc = show?.description || '';
+    const isLive = show?.auto_dj === false;
+
+    document.getElementById('showInfo').textContent = showName;
+    document.getElementById('showDesc').textContent = showDesc;
+
+    if (isLive) {
+      const sheetId = await getSheetIdForShow(showName);
+      if (sheetId) {
+        await fetchNowPlayingFromSheet(sheetId);
+        return;
+      }
+    }
+
+    const track = data.tracks.current?.metadata || {};
+    const fallback = track.track_title && track.artist_name
+      ? `${track.artist_name} – ${track.track_title}`
+      : data.tracks.current?.name || 'Unknown Track';
+    document.getElementById('trackInfo').textContent = fallback;
+
+  } catch (err) {
+    console.error('Error fetching show info:', err);
+    document.getElementById('trackInfo').textContent = 'Unavailable';
+    document.getElementById('showInfo').textContent = 'Unavailable';
+    document.getElementById('showDesc').textContent = '';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  GreenAudioPlayer.init({
+    selector: '.green-audio-player',
+    stopOthersOnPlay: true
   });
-</script>
-
-</body>
-
+  updateNowPlaying();
+  setInterval(updateNowPlaying, 30000);
+});
+</script></body>
 </html>
