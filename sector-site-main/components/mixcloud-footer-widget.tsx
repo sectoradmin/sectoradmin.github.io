@@ -39,16 +39,6 @@ export default function MixcloudFooterWidget({
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Suppress Mixcloud origin errors
-    const originalConsoleError = console.error;
-    console.error = (...args) => {
-      if (args[0] && typeof args[0] === 'string' && args[0].includes('Playerwidget received message from incorrect origin')) {
-        // Suppress this specific error
-        return;
-      }
-      originalConsoleError.apply(console, args);
-    };
-
     // Simple click handler - no complex preloading
     const handleShowClick = (event: Event) => {
       const target = event.target as HTMLElement;
@@ -157,8 +147,6 @@ export default function MixcloudFooterWidget({
     return () => {
       document.removeEventListener('click', handleShowClick, true);
       window.removeEventListener('live-play', handleLivePlay);
-      // Restore original console.error
-      console.error = originalConsoleError;
     };
 
   }, []);

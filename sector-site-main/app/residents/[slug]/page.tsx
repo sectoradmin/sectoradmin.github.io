@@ -247,7 +247,7 @@ function ResidentEpisodesClient({
                     e.preventDefault();
                   } else {
                     e.preventDefault();
-                    window.location.href = `/shows/${ep.slug}`;
+                    router.push(`/shows/${ep.slug}`);
                   }
                 }}
               >

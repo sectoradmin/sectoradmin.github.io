@@ -645,18 +645,8 @@ function EpisodeCard({
       el.setAttribute("data-mixcloud-play-button", ep.showlink);
     }
     return () => {
-      // Clean up Mixcloud-injected DOM before React tries to reconcile
       if (el) {
         el.removeAttribute("data-mixcloud-play-button");
-        // Remove any nodes Mixcloud injected
-        while (el.lastChild && el.childNodes.length > el.querySelectorAll('[data-react]').length) {
-          const child = el.lastChild;
-          if (child instanceof HTMLElement && child.tagName === 'IFRAME') {
-            el.removeChild(child);
-          } else {
-            break;
-          }
-        }
       }
     };
   }, [ep.showlink]);
@@ -747,7 +737,7 @@ function EpisodeCard({
                   onTagSearch(tag.name, "tag");
                 } else {
                   const params = new URLSearchParams({ q: tag.name, type: "tag" });
-                  window.location.href = `/search?${params.toString()}`;
+                  router.push(`/search?${params.toString()}`);
                 }
               }}
               className="bg-gray-200 text-black text-[9px] px-2 py-1 rounded hover:bg-gray-300 transition-colors duration-200 cursor-pointer font-akzid"
@@ -1117,7 +1107,7 @@ function EpisodeDetailInline({
                             onTagSearch(tag, "tag");
                           } else {
                             const qs = new URLSearchParams({ q: tag, type: "tag" }).toString();
-                            window.location.href = `/search?${qs}`;
+                            router.push(`/search?${qs}`);
                           }
                         }}
                         className="bg-gray-200 text-black text-[9px] px-2 py-1 rounded hover:bg-gray-300 transition-colors duration-200 cursor-pointer font-akzid"
@@ -1538,7 +1528,7 @@ function RelatedShowsInline({
                   onTagSearch(tag, "tag");
                 } else {
                   const qs = new URLSearchParams({ q: tag, type: "tag" }).toString();
-                  window.location.href = `/search?${qs}`;
+                  router.push(`/search?${qs}`);
                 }
                               }}
                               className="bg-gray-200 text-black text-[9px] px-2 py-1 rounded hover:bg-gray-300 transition-colors duration-200 cursor-pointer font-akzid"
@@ -1580,5 +1570,4 @@ function RelatedShowsInline({
     </section>
   );
 }
-
 

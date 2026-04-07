@@ -100,7 +100,7 @@ function ManageSubscription() {
         }
         if (data.url) {
           unsub();
-          window.location.assign(data.url);
+          router.push(data.url);
         }
       });
     } catch (e: any) {
@@ -125,7 +125,7 @@ function ManageSubscription() {
       // @ts-ignore
       const url = res?.data?.url;
       if (!url) throw new Error("No portal URL returned.");
-      window.location.assign(url);
+      router.push(url);
     } catch (e: any) {
       setErr(e?.message ?? String(e));
     } finally {

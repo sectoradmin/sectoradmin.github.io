@@ -171,7 +171,7 @@ export default function SearchResults() {
   };
 
   const goBack = () => {
-    window.history.back();
+    router.back();
   };
 
   return (
@@ -182,13 +182,13 @@ export default function SearchResults() {
         <div className="flex items-center flex-shrink-0">
           <div 
             className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mr-2 sm:mr-4 cursor-pointer hover:opacity-80 transition-opacity duration-200"
-            onClick={() => window.location.href = '/'}
+            onClick={() => router.push('/')}
           >
             <Image src="/logo.png" alt="SECTOR.FM Logo" width={64} height={64} className="w-full h-full object-contain" />
           </div>
           <span 
             className="hidden sm:inline text-white font-bold text-sm sm:text-lg cursor-pointer hover:text-gray-300 transition-colors duration-200"
-            onClick={() => window.location.href = '/'}
+            onClick={() => router.push('/')}
           >
             SECTOR.FM
           </span>
@@ -357,7 +357,7 @@ export default function SearchResults() {
                       onClick={(e) => {
                         e.stopPropagation();
                         const djName = show.name.split(' - ')[0].trim();
-                        window.location.href = `/?r=${slugify(djName)}`;
+                        router.push(`/?r=${slugify(djName)}`);
                       }}
                       className="hover:underline text-left"
                     >
