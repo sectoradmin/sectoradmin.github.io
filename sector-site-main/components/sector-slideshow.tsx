@@ -33,14 +33,14 @@ export default function Slideshow(){
       onSwiper={(swiper) => console.log(swiper)}
       className="max-h-[700px]"
     >
-      <SwiperSlide ><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776845/original_02b4a58dab166a9fe918edfa1da8dbf7.jpg?1755132002?bc=0" alt="" /></SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776838/original_5ed6e4dc036b60a9ade1b66641df0359.jpg?1755131995?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776836/original_5685a3d9925a609ee3b43cd78ced8966.jpg?1755131994?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776851/original_fd35dfda342af43301f86834c4b938f8.jpg?1755132004?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776821/original_89daa19936ffd7507d78dc4f9e824310.jpg?1755131973?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776807/original_870ad3d96454a977dccf8a8ca805d73e.jpg?1755131958?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776779/original_d665c3d44beaacca38b908800dc1b01f.jpg?1755131887?bc=0" alt="" /> </SwiperSlide>
-      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776780/original_7f46f2acdb2de1eb2d60727e1965d895.jpg?1755131888?bc=0" alt="" /> </SwiperSlide>
+      <SwiperSlide ><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776845/original_02b4a58dab166a9fe918edfa1da8dbf7.jpg?1755132002?bc=0" alt="Sector FM slideshow image 1" /></SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776838/original_5ed6e4dc036b60a9ade1b66641df0359.jpg?1755131995?bc=0" alt="Sector FM slideshow image 2" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776836/original_5685a3d9925a609ee3b43cd78ced8966.jpg?1755131994?bc=0" alt="Sector FM slideshow image 3" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776851/original_fd35dfda342af43301f86834c4b938f8.jpg?1755132004?bc=0" alt="Sector FM slideshow image 4" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776821/original_89daa19936ffd7507d78dc4f9e824310.jpg?1755131973?bc=0" alt="Sector FM slideshow image 5" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776807/original_870ad3d96454a977dccf8a8ca805d73e.jpg?1755131958?bc=0" alt="Sector FM slideshow image 6" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776779/original_d665c3d44beaacca38b908800dc1b01f.jpg?1755131887?bc=0" alt="Sector FM slideshow image 7" /> </SwiperSlide>
+      <SwiperSlide><img src="https://d2w9rnfcy7mm78.cloudfront.net/38776780/original_7f46f2acdb2de1eb2d60727e1965d895.jpg?1755131888?bc=0" alt="Sector FM slideshow image 8" /> </SwiperSlide>
     </Swiper>
     </div>
   );

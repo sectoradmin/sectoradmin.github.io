@@ -11,9 +11,11 @@ import LiveSchedule from "../../components/live-schedule"
 import CurrentTrack from "../../components/current-track"
 import MixcloudFooterWidget from "../../components/mixcloud-footer-widget"
 import ResidentsLayout from '../../components/residents-layout';
+import { useRouter } from 'next/navigation';
 
 export default function ResidentsPage() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const router = useRouter();
   return (
         <div className="min-h-screen bg-black text-white font-sans">
           {/* Header */}
@@ -25,7 +27,7 @@ export default function ResidentsPage() {
               </div> 
               <span 
                 className="hidden sm:inline text-white font-bold text-lg cursor-pointer hover:text-gray-300 transition-colors duration-200"
-                onClick={() => window.location.href = '/'}
+                onClick={() => router.push('/')}
               >
                 SECTOR.FM
               </span>

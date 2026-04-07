@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface SearchSuggestion {
   type: 'dj' | 'tag';
@@ -16,6 +17,7 @@ interface SearchModalProps {
 }
 
 export default function SearchModal({ isOpen, onClose, onSearch }: SearchModalProps) {
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
   const [allSuggestions, setAllSuggestions] = useState<SearchSuggestion[]>([]);
@@ -215,7 +217,7 @@ export default function SearchModal({ isOpen, onClose, onSearch }: SearchModalPr
         type: searchType
       });
       
-      window.location.href = `/search?${params.toString()}`;
+      router.push(`/search?${params.toString()}`);
     }
     onClose();
   };

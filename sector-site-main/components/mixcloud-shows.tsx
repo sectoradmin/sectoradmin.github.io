@@ -205,7 +205,7 @@ export default function MixcloudShows({
       onSearch(tagName, 'tag');
     } else {
       const params = new URLSearchParams({ q: tagName, type: 'tag' });
-      window.location.href = `/search?${params.toString()}`;
+      router.push(`/search?${params.toString()}`);
     }
   };
 
