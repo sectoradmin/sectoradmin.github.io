@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*",   "destination": "https://cms.sector.fm/api/:path*" },
+    { "source": "/media/:path*", "destination": "https://cms.sector.fm/media/:path*" },
+    { "source": "/panel/:path*", "destination": "https://cms.sector.fm/panel/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/media/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
